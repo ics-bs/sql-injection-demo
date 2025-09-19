@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="se.lu.ics.controllers.EmployeesViewController">
+
+    <!-- Center: Table of Employees -->
+    <center>
+        <TableView fx:id="tableViewEmployee" prefHeight="320.0" prefWidth="700.0">
+            <columns>
+                <TableColumn fx:id="tableColumnEmployeeNumber" text="Employee No" prefWidth="120.0"/>
+                <TableColumn fx:id="tableColumnEmployeeName" text="Name" prefWidth="300.0"/>
+                <TableColumn fx:id="tableColumnEmployeeSalary" text="Salary" prefWidth="200.0"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <!-- Bottom: Input form and controls -->
+    <bottom>
+        <VBox spacing="8.0">
+            <!-- Explicit padding using Insets to avoid coercion errors -->
+            <padding>
+                <Insets top="10.0" right="10.0" bottom="10.0" left="10.0"/>
+            </padding>
+
+            <GridPane hgap="10.0" vgap="8.0">
+                <columnConstraints>
+                    <ColumnConstraints halignment="RIGHT" minWidth="100.0"/>
+                    <ColumnConstraints hgrow="ALWAYS" minWidth="200.0"/>
+                </columnConstraints>
+
+                <Label text="Employee No:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="textFieldEmployeeNumber" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Name:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="textFieldEmployeeName" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Salary:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="textFieldEmployeeSalary" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <HBox spacing="8.0">
+                <Button fx:id="btnEmployeeAdd" text="Add" onMouseClicked="#buttonEmployeeAdd_OnClick"/>
+                <Label fx:id="labelErrorMessage" textFill="RED"/>
+            </HBox>
+        </VBox>
+    </bottom>
+
+</BorderPane>
