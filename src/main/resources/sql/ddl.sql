@@ -41,4 +41,58 @@ VALUES
     ('IT', 250000.00),
     ('Sales', 200000.00);
 
+-- Insert employees
+INSERT INTO Employee
+    (EmpNo, EmpName, EmpSalary)
+VALUES
+    ('E1', 'Bob', '55000'),
+    ('E2', 'Dan', '60000'),
+    ('E3', 'Amy', '62000'),
+    ('E4', 'Ham', '70000'),
+    ('E5', 'Jim', '48000'),
+    ('E6', 'Sue', '52000');
 
+-- Insert employee-department relationships (Work table)
+INSERT INTO Work
+    (EmployeeID, DepartmentID, StartDate)
+VALUES
+    (
+        (SELECT EmployeeID FROM Employee WHERE EmpNo = 'E1'),
+        (SELECT DepartmentID FROM Department WHERE DeptName = 'HR'),
+        '2023-05-01'
+    ),
+    (
+        (SELECT EmployeeID FROM Employee WHERE EmpNo = 'E1'),
+        (SELECT DepartmentID FROM Department WHERE DeptName = 'IT'),
+        '2023-06-01'
+    ),
+    (
+        (SELECT EmployeeID FROM Employee WHERE EmpNo = 'E2'),
+        (SELECT DepartmentID FROM Department WHERE DeptName = 'HR'),
+        '2022-08-15'
+    ),
+    (
+        (SELECT EmployeeID FROM Employee WHERE EmpNo = 'E3'),
+        (SELECT DepartmentID FROM Department WHERE DeptName = 'IT'),
+        '2021-06-10'
+    ),
+    (
+        (SELECT EmployeeID FROM Employee WHERE EmpNo = 'E4'),
+        (SELECT DepartmentID FROM Department WHERE DeptName = 'IT'),
+        '2023-01-20'
+    ),
+    (
+        (SELECT EmployeeID FROM Employee WHERE EmpNo = 'E4'),
+        (SELECT DepartmentID FROM Department WHERE DeptName = 'Sales'),
+        '2023-04-25'
+    ),
+    (
+        (SELECT EmployeeID FROM Employee WHERE EmpNo = 'E5'),
+        (SELECT DepartmentID FROM Department WHERE DeptName = 'Sales'),
+        '2022-11-05'
+    ),
+    (
+        (SELECT EmployeeID FROM Employee WHERE EmpNo = 'E6'),
+        (SELECT DepartmentID FROM Department WHERE DeptName = 'Sales'),
+        '2023-03-12'
+    );
